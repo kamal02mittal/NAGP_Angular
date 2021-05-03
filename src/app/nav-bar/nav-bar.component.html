@@ -6,4 +6,6 @@
   <a routerLink="/cart" class="button fancy-button nav-item">
     <i class="fa fa-shopping-cart"></i>Cart
   </a>
+  <a *ngIf="!isLoggedIn()"  routerLink="/login" class="button fancy-button nav-item">Login</a>
+  <button *ngIf="isLoggedIn()" class="button fancy-button nav-item" (click)="onLogout()">Logout</button>
 </div>

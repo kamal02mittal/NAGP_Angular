@@ -42,16 +42,10 @@ export class AuthenticationService {
     }
   }
 
-  isAdmin(){
-    if(this.authenticatedUser){
-      return this.authenticatedUser.roles.indexOf("ADMIN")>-1;
-    }
-    else return false;
-  }
-
   isAuthenticated(){
     return this.authenticated;
   }
+  
   logout(){
     this.authenticated=false;
     this.authenticatedUser=undefined;

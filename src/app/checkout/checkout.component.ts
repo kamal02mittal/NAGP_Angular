@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../cart.service';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
+import { AuthenticationService } from '../authentication.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-checkout',
@@ -18,8 +20,18 @@ export class CheckoutComponent implements OnInit{
             email: ["", [Validators.required, Validators.email]],
           });
       }
-    constructor(private cartService: CartService,
+    constructor(private authService:AuthenticationService,
+      private router:Router,
+      private cartService: CartService,
         private formBuilder : FormBuilder) { 
+          if(!this.isLoggedIn()){
+            this.router.navigateByUrl('/login');
+          }
+    }
+
+    isLoggedIn(){
+      this.authService.loadUser();
+      return this.authService.isAuthenticated();
     }
 
     onSubmit(): void {
