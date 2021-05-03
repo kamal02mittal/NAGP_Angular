@@ -7,9 +7,6 @@ import { products } from '../products';
   templateUrl: './product-list.component.html'
 })
 export class ProductListComponent {
+  searchText;
   products = products;
-
-  share() {
-    window.alert('The product has been shared!');
-  }
 }
