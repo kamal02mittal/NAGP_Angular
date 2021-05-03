@@ -1,0 +1,101 @@
+<h2 class="page-title">Checkout</h2>
+<div class="checkout-form">
+    <form novalidate [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
+
+        <div>
+            <label for="name">
+                Name:
+            </label>
+            <input 
+                id="name" 
+                type="text" 
+                formControlName="name"
+                [ngClass]="{
+                    'is-invalid':
+                      (checkoutForm.get('name').touched || checkoutForm.get('name').dirty) &&
+                      !checkoutForm.get('name').valid
+                  }"/>
+                  <span class="invalid-feedback">
+                    <span *ngIf="checkoutForm.get('name').errors?.required">
+                      Please enter your name.
+                    </span>
+                    <span *ngIf="checkoutForm.get('name').errors?.minlength">
+                      Name must be longer than 4 characters.
+                    </span>
+                  </span>
+        </div>
+    
+        <div>
+        <label for="shippingaddress">
+            Shipping Address:
+        </label>
+        <input 
+            id="shippingaddress" 
+            type="text" 
+            formControlName="shippingaddress"
+            [ngClass]="{
+                'is-invalid':
+                  (checkoutForm.get('shippingaddress').touched ||
+                  checkoutForm.get('shippingaddress').dirty) &&
+                  !checkoutForm.get('shippingaddress').valid
+              }"/>
+        <span class="invalid-feedback">
+            <span *ngIf="checkoutForm.get('shippingaddress').errors?.required">
+                Please enter shipping address.
+            </span>
+        </span>
+        </div>
+        <div>
+            <label for="phone">
+                Phone:
+            </label>
+            <input 
+                id="phone" 
+                type="text" 
+                formControlName="phone"
+                [ngClass]="{
+                    'is-invalid':
+                      (checkoutForm.get('phone').touched ||
+                      checkoutForm.get('phone').dirty) &&
+                      !checkoutForm.get('phone').valid
+                  }"/>
+            <span class="invalid-feedback">
+                <span *ngIf="checkoutForm.get('phone').errors?.required">
+                    Please enter your phone number.
+                </span>
+                <span *ngIf="checkoutForm.get('phone').errors?.pattern">Please, Enter 10 digit Mobile Number.</span>
+            </span>
+        </div>
+        <div>
+            <label for="email">
+                Email:
+            </label>
+            <input 
+                id="email" 
+                type="text" 
+                formControlName="email"
+                [ngClass]="{
+                    'is-invalid':
+                      (checkoutForm.get('email').touched ||
+                      checkoutForm.get('email').dirty) &&
+                      !checkoutForm.get('email').valid
+                  }"/>
+                  <span class="invalid-feedback">
+                    <span *ngIf="checkoutForm.controls.email.errors?.required">
+                      Please enter your email address.
+                    </span>
+                    <span *ngIf="checkoutForm.controls.email.errors?.email">
+                        Please enter valid email address.
+                      </span>
+                  </span>
+        </div>
+    
+        <button class="button" type="submit" [disabled]="!checkoutForm.valid">Purchase</button>
+    
+    </form>
+</div>
+
+<br />Touched: {{ checkoutForm.touched }} <br />Dirty: {{ checkoutForm.dirty }}
+<br />Valid: {{ checkoutForm.valid }} <br />Value: {{ checkoutForm.value | json }}
+<br />Name error: {{ checkoutForm.get("name").errors | json }}
+<br />Email error: {{ checkoutForm.controls.email.errors | json }}
