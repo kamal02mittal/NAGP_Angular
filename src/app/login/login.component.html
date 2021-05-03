@@ -1,14 +1,20 @@
-<div class="col-md-4">
-    <form #f="ngForm" (ngSubmit)="onLogin(f.value)">
+<div class="login-form">
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-group">
         <label class="control-label">Login:</label>
-        <input type="text" name="username" ngModel class="form-control">
+        <input type="text" name="username" [formControlName]="'username'">
+        <div *ngIf="loginForm.get('username').dirty && loginForm.get('username').hasError('required')">
+            Username is a required field
+        </div>
       </div>
       <div class="form-group">
         <label class="control-label">Password:</label>
-        <input type="password" name="password" ngModel class="form-control">
+        <input type="password" name="password" [formControlName]="'password'">
+        <div *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">
+            Password is a required field
+        </div>
       </div>
-      <button type="submit" class="btn btn-primary">Login</button>
+      <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button>
     </form>
   </div>
   

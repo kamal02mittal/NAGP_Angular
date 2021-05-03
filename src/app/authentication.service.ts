@@ -30,6 +30,7 @@ export class AuthenticationService {
     }
     else{
       this.authenticated=false;
+      console.log("Invalid user");
     }
   }
 
