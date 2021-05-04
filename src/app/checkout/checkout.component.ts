@@ -27,6 +27,9 @@ export class CheckoutComponent implements OnInit{
           if(!this.isLoggedIn()){
             this.router.navigateByUrl('/login');
           }
+          if(!this.cartService.getItems().length){
+            this.router.navigateByUrl('/cart');
+          }
     }
 
     isLoggedIn(){
@@ -42,6 +45,7 @@ export class CheckoutComponent implements OnInit{
             this.items = this.cartService.clearCart();
             alert('Your order has been submitted');
             this.checkoutForm.reset();
+            this.router.navigateByUrl('/');
         }
         
       }

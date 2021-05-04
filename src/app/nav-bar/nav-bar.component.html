@@ -1,11 +1,26 @@
-<div class="nav-bar">
-  <a [routerLink]="['/']" class="home-nav nav-item">
-    <h1><i class="fa fa-home"></i>Home</h1>
-  </a>
-  <a routerLink="/products" class="button fancy-button nav-item">Products</a>
-  <a routerLink="/cart" class="button fancy-button nav-item">
-    <i class="fa fa-shopping-cart"></i>Cart
-  </a>
-  <a *ngIf="!isLoggedIn()"  routerLink="/login" class="button fancy-button nav-item">Login</a>
-  <button *ngIf="isLoggedIn()" class="button fancy-button nav-item" (click)="onLogout()">Logout</button>
-</div>
+
+<nav class="navbar navbar-expand-lg navbar-light">
+  <div class="container-fluid">
+    <a [routerLink]="['/']" class="home-nav nav-item">
+      <h3><i class="fa fa-home"></i>Home</h3>
+    </a>
+    <div class="collapse navbar-collapse" id="navbarScroll">
+      <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+        <li class="nav-item">
+          <a routerLink="/products">Products</a>
+        </li>
+      </ul>
+      <ul>
+        <li class="nav-item">
+          <a *ngIf="!isLoggedIn()"  routerLink="/login">Login</a>
+          <button *ngIf="isLoggedIn()" (click)="onLogout()">Logout</button>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/cart">
+            <i class="fa fa-shopping-cart"></i>Cart
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,18 +1,43 @@
+<h2 class="page-title">Login</h2>
 <div class="login-form">
     <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
       <div class="form-group">
-        <label class="control-label">Login:</label>
-        <input type="text" name="username" [formControlName]="'username'">
-        <div *ngIf="loginForm.get('username').dirty && loginForm.get('username').hasError('required')">
-            Username is a required field
-        </div>
+        <label for="username">Login:</label>
+        <input 
+          id="username" 
+          type="text" 
+          name="username" 
+          [formControlName]="'username'"
+          [ngClass]="{
+            'is-invalid':
+              (loginForm.get('username').touched || loginForm.get('username').dirty) &&
+              !loginForm.get('username').valid
+          }"   
+          class="form-control">
+        <span class="invalid-feedback">
+          <span *ngIf="(loginForm.get('username').touched || loginForm.get('username').dirty) && loginForm.get('username').hasError('required')">
+              username is a required field
+          </span>
+        </span>
       </div>
       <div class="form-group">
-        <label class="control-label">Password:</label>
-        <input type="password" name="password" [formControlName]="'password'">
-        <div *ngIf="loginForm.get('password').dirty && loginForm.get('password').hasError('required')">
-            Password is a required field
-        </div>
+        <label for="password">Password:</label>
+        <input 
+          id="password" 
+          type="password" 
+          name="password" 
+          [formControlName]="'password'" 
+          [ngClass]="{
+            'is-invalid':
+              (loginForm.get('password').touched || loginForm.get('password').dirty) &&
+              !loginForm.get('password').valid
+          }"
+          class="form-control">
+          <span class="invalid-feedback">
+            <span *ngIf="(loginForm.get('password').touched || loginForm.get('password').dirty) && loginForm.get('password').hasError('required')">
+                Password is a required field
+            </span>
+          </span>
       </div>
       <button [disabled]="!loginForm.valid" type="submit" class="btn btn-primary">Login</button>
     </form>

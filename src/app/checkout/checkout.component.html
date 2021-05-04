@@ -2,7 +2,7 @@
 <div class="checkout-form">
     <form novalidate [formGroup]="checkoutForm" (ngSubmit)="onSubmit()">
 
-        <div>
+        <div class="form-group">
             <label for="name">
                 Name:
             </label>
@@ -14,7 +14,7 @@
                     'is-invalid':
                       (checkoutForm.get('name').touched || checkoutForm.get('name').dirty) &&
                       !checkoutForm.get('name').valid
-                  }"/>
+                  }"  class="form-control"/>
                   <span class="invalid-feedback">
                     <span *ngIf="checkoutForm.get('name').errors?.required">
                       Please enter your name.
@@ -25,7 +25,7 @@
                   </span>
         </div>
     
-        <div>
+        <div class="form-group">
         <label for="shippingaddress">
             Shipping Address:
         </label>
@@ -38,14 +38,14 @@
                   (checkoutForm.get('shippingaddress').touched ||
                   checkoutForm.get('shippingaddress').dirty) &&
                   !checkoutForm.get('shippingaddress').valid
-              }"/>
+              }"  class="form-control"/>
         <span class="invalid-feedback">
             <span *ngIf="checkoutForm.get('shippingaddress').errors?.required">
                 Please enter shipping address.
             </span>
         </span>
         </div>
-        <div>
+        <div class="form-group">
             <label for="phone">
                 Phone:
             </label>
@@ -58,7 +58,7 @@
                       (checkoutForm.get('phone').touched ||
                       checkoutForm.get('phone').dirty) &&
                       !checkoutForm.get('phone').valid
-                  }"/>
+                  }"  class="form-control"/>
             <span class="invalid-feedback">
                 <span *ngIf="checkoutForm.get('phone').errors?.required">
                     Please enter your phone number.
@@ -66,7 +66,7 @@
                 <span *ngIf="checkoutForm.get('phone').errors?.pattern">Please, Enter 10 digit Mobile Number.</span>
             </span>
         </div>
-        <div>
+        <div class="form-group">
             <label for="email">
                 Email:
             </label>
@@ -79,7 +79,7 @@
                       (checkoutForm.get('email').touched ||
                       checkoutForm.get('email').dirty) &&
                       !checkoutForm.get('email').valid
-                  }"/>
+                  }"  class="form-control"/>
                   <span class="invalid-feedback">
                     <span *ngIf="checkoutForm.controls.email.errors?.required">
                       Please enter your email address.
@@ -89,13 +89,8 @@
                       </span>
                   </span>
         </div>
-    
-        <button class="button" type="submit" [disabled]="!checkoutForm.valid">Purchase</button>
-    
+        <div class="form-group"> 
+            <button class="button btn btn-primary" type="submit" [disabled]="!checkoutForm.valid">Purchase</button>
+        </div>
     </form>
 </div>
-
-<br />Touched: {{ checkoutForm.touched }} <br />Dirty: {{ checkoutForm.dirty }}
-<br />Valid: {{ checkoutForm.valid }} <br />Value: {{ checkoutForm.value | json }}
-<br />Name error: {{ checkoutForm.get("name").errors | json }}
-<br />Email error: {{ checkoutForm.controls.email.errors | json }}

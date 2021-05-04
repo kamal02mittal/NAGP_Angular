@@ -129,6 +129,9 @@ app-top-bar h1 {
   margin: 0;
 }
 
+.navbar {
+  background-color: antiquewhite;
+}
 /* Checkout Cart, Shipping Prices */
 
 .cart-item,
@@ -236,4 +239,38 @@ input.qty {
 button.qty-button {
   height: 40px;
   width: 40px;
+  margin: 15px;
+}
+
+.login-form,
+.checkout-form {
+  max-width: 50%;
+  margin: auto;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+
+.d-flex {
+  display: flex !important;
+  margin-bottom: 0;
+}
+li.nav-item a {
+  color: grey;
+  padding: 20px;
+}
+li.nav-item {
+  list-style: none;
+}
+li.nav-item button {
+  background: no-repeat;
+  color: grey;
+  display: inline-block;
+  padding: 0px 10px;
+}
+.nav-item {
+  display: inline-block;
+}
+.invalid-feedback span {
+  color: #dc3545;
 }
