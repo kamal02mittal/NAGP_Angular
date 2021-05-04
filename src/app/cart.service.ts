@@ -18,7 +18,12 @@ export class CartService {
   }
 
   addToCart(product) {
-    this.items.push(product);
+    let index = this.items.findIndex(x => x.id === product.id);
+    if(index > -1){
+      this.items[index].qty = parseInt(this.items[index].qty)+parseInt(product.qty);
+    } else {
+      this.items.push(product);
+    }
     localStorage.setItem("cartdata",JSON.stringify(this.items));
   }
 

@@ -1,4 +1,4 @@
-<h2 class="page-title">Cart</h2>
+<h2 class="page-title">Shopping Cart</h2>
 <p>
     <!-- <a routerLink="/shipping">Shipping Prices</a> -->
 </p>
@@ -20,10 +20,14 @@
     <tbody> 
       <tr *ngFor="let item of items" class="products-main-">
           <td>
+            <a [title]="item.name + ' details'" [routerLink]="['/products', item.id]">
               <img [src]="item.image" />
+            </a>
           </td>
           <td>
+            <a [title]="item.name + ' details'" [routerLink]="['/products', item.id]">
               {{ item.name }}
+            </a>
           </td>
           <td>{{ item.price | currency }}</td>
           <td>

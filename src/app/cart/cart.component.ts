@@ -26,7 +26,6 @@ export class CartComponent {
         this.items[index] = item;
         this.cartService.updateItems(this.items);
         this.total = this.cartService.getSubTotal(this.items);
-
       }
     }
 
