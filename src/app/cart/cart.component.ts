@@ -24,7 +24,9 @@ export class CartComponent {
       if(item.qty > 1){
         item.qty = parseInt(qty)-1;
         this.items[index] = item;
+        this.cartService.updateItems(this.items);
         this.total = this.cartService.getSubTotal(this.items);
+
       }
     }
 
@@ -32,12 +34,14 @@ export class CartComponent {
         let index = this.items.indexOf(item);
         item.qty = parseInt(qty)+1;
         this.items[index] = item;
+        this.cartService.updateItems(this.items);
         this.total = this.cartService.getSubTotal(this.items);
     }
 
     deleteItem(item){
       let index = this.items.indexOf(item);
       this.items.splice(index, 1);
+      this.cartService.updateItems(this.items);
       this.total = this.cartService.getSubTotal(this.items);
     }
 

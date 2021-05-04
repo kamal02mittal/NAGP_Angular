@@ -10,10 +10,16 @@ export class CartService {
 
   constructor(
     private http: HttpClient
-  ) {}
+  ) {
+    let cartItems = localStorage.getItem('cartdata');
+    if(cartItems){
+      this.items = JSON.parse(cartItems);
+    }
+  }
 
   addToCart(product) {
     this.items.push(product);
+    localStorage.setItem("cartdata",JSON.stringify(this.items));
   }
 
   getItems() {
@@ -30,7 +36,12 @@ export class CartService {
 
   clearCart() {
     this.items = [];
+    localStorage.setItem("cartdata",JSON.stringify(this.items));
     return this.items;
+  }
+
+  updateItems(items){
+    localStorage.setItem("cartdata",JSON.stringify(items));
   }
 
   getShippingPrices() {
