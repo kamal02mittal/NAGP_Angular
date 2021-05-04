@@ -174,7 +174,7 @@ app-top-bar h1 {
   margin: auto;
 }
 .product-detail div {
-  display: inline-block;
+  float: left;
   width: 40%;
 }
 
@@ -196,12 +196,44 @@ a.checkout-button {
 }
 
 .footer-section {
-  bottom: 0;
-  position: absolute;
   background: antiquewhite;
   padding: 15px;
   width: 100%;
   text-align: center;
   font-size: 12px;
   font-weight: 600;
+}
+a {
+  text-decoration: none !important;
+}
+.cart-subtotal {
+  text-align: right;
+  font-size: 16px;
+  font-weight: 600;
+}
+.container {
+  min-height: 650px;
+}
+
+input.qty {
+  width: 50px;
+  margin: 0 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+.cart-qty {
+  height: 50px;
+  width: 50px;
+  text-align: center;
+}
+.search {
+  margin-bottom: 25px;
+}
+.search label {
+  margin-right: 15px;
+  font-size: 16px;
+}
+button.qty-button {
+  height: 40px;
+  width: 40px;
 }

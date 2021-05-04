@@ -6,6 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class CartService {
   items = [];
+  total;
 
   constructor(
     private http: HttpClient
@@ -19,6 +20,14 @@ export class CartService {
     return this.items;
   }
 
+  getSubTotal(items){
+    this.total = 0;
+    items.forEach((product) => {
+      this.total += product.price * product.qty;
+    });
+    return this.total;
+  }
+
   clearCart() {
     this.items = [];
     return this.items;
@@ -29,3 +38,4 @@ export class CartService {
   }
 
 }
+

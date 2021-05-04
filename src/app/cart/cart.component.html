@@ -6,11 +6,17 @@
   <p *ngIf="!items.length" class="cart-msg">
     There is no item in the cart
   </p>
+  <p *ngIf="items.length" >Total Items : {{ items.length }}</p>
   <div class="cart-item" *ngFor="let item of items">
     <img [src]="item.image" />
     <span>{{ item.name }}</span>
     <span>{{ item.price | currency }}</span>
+    <button class="qty-button minus" (click)="subQty(item, item.qty)">-</button>
+      <input type="text" name="cart-qty" class="cart-qty" [(ngModel)]="item.qty" disabled/>
+    <button class="qty-button plus" (click)="addQty(item, item.qty)">+</button>
+    <button class="qty-button" (click)="deleteItem(item)">x</button>
   </div>
+  <p *ngIf="items.length" class="cart-subtotal"> Subtotal: {{ total | currency }}</p>
   <a *ngIf="items.length" routerLink="/checkout" class="checkout-button">
     Proceed to Checkout
   </a>

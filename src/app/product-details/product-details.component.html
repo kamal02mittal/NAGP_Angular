@@ -8,6 +8,15 @@
     <h3>{{ product.name }}</h3>
     <h4>{{ product.price | currency }}</h4>
     <p>{{ product.description }}</p>
-    <button (click)="addToCart(product)">Add To Cart</button>
+    <p> Category : {{product.categoryName }}</p>
+    <form  [formGroup]="addToCartForm" (ngSubmit)="onAddToCart(product)">
+      <label class="control-label" for="qty">Qty:<br></label>
+      <input type="text" class="qty" name="qty" id="qty" [formControlName]="'qty'"/>
+      <span *ngIf="addToCartForm.get('qty').dirty && addToCartForm.get('qty').hasError('required')">
+          qty is a required field
+      </span>
+      <br>
+      <button [disabled]="!addToCartForm.valid" type="submit" class="btn btn-primary">Add To Cart</button>
+    </form>
   </div>
 </div>

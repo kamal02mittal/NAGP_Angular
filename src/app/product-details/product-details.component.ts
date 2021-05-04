@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { products } from '../products';
 import { CartService } from './../cart.service';
 
@@ -10,11 +10,17 @@ import { CartService } from './../cart.service';
   })
 export class ProductDetailsComponent implements OnInit {
     product;
+    addToCartForm : FormGroup;
     constructor(
         private route: ActivatedRoute,
         private router:Router,
-        private cartService: CartService
-      ) { }
+        private cartService: CartService,
+        private readonly fb: FormBuilder
+      ) {
+        this.addToCartForm = this.fb.group({
+          qty: ['1', Validators.required]
+        });
+       }
 
       ngOnInit() {
         // First get the product id from the current route.
@@ -25,9 +31,11 @@ export class ProductDetailsComponent implements OnInit {
         this.product = products.find(product => product.id === productIdFromRoute);
       }
 
-      addToCart(product) {
+      onAddToCart(product) {
+        //console.log(this.addToCartForm.getRawValue().qty);
+        product.qty = this.addToCartForm.getRawValue().qty;
         this.cartService.addToCart(product);
         window.alert('Your product has been added to the cart!');
-        this.router.navigateByUrl('/login');
+        this.router.navigateByUrl('/cart');
       }
   }
