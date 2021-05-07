@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Router} from '@angular/router';
-import {AuthenticationService} from '../authentication.service';
+import {AuthenticationService} from '../services/authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -11,27 +11,24 @@ export class LoginComponent implements OnInit {
     loginForm : FormGroup;
 
   constructor(private authService:AuthenticationService,
-              private router:Router,
-              private readonly fb: FormBuilder) {
-                  
-                this.loginForm = this.fb.group({
-                    username: ['', Validators.required],     
-                    password: ['', Validators.required]
-                  });
-               }
+              public router:Router,
+              private readonly fb: FormBuilder) {}
 
   ngOnInit() {
+    this.loginForm = this.fb.group({
+      username: ['', Validators.required],     
+      password: ['', Validators.required]
+    });
     this.authService.loadUser();
     if(this.authService.isAuthenticated()){
-        this.router.navigateByUrl('/');
+      this.router.navigate(['/']);
     }
   }
 
   onLogin(){
-    //console.log(this.loginForm.getRawValue());
     this.authService.login(this.loginForm.getRawValue().username,this.loginForm.getRawValue().password);
      if(this.authService.isAuthenticated()){
-       this.router.navigateByUrl('/');
+       this.router.navigate(['/']);
      }
 
   }

@@ -1,4 +1,4 @@
-<h2 class="page-title">All Products</h2>
+<h2 class="page-title">{{ title }}</h2>
 <div class="search">
     <label>Search Products : </label>
     <input [(ngModel)]="searchText"/>
@@ -6,7 +6,6 @@
 <table class="table table-striped table-bordered table-hover">
     <thead>
         <tr>
-          <th>Id</th>
           <th>Product Image</th>
           <th>Product Name</th>
           <th>Description</th>
@@ -16,7 +15,6 @@
     </thead>
     <tbody> 
         <tr *ngFor="let product of products | filter:searchText" class="products-main-">
-            <td>{{ product.id }}</td>
             <td>
             <a [title]="product.name + ' details'" [routerLink]="['/products', product.id]">
                 <img [src]="product.image" /><br>

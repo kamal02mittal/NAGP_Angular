@@ -9,7 +9,6 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 import { CartComponent } from './cart/cart.component';
 import { HttpClientModule } from '@angular/common/http';
-import { ShippingComponent } from './shipping/shipping.component';
 import { HomeComponent } from './home/home.component';
 import { CheckoutComponent } from './checkout/checkout.component';
 import { FooterComponent } from './footer/footer.component';
@@ -25,11 +24,11 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     Ng2SearchPipeModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent },
-      { path: 'products', component: ProductListComponent },
+      { path: 'category', component: ProductListComponent },
+      { path: 'category/:categoryId', component: ProductListComponent },
       { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'cart', component: CartComponent },
       { path: 'checkout', component: CheckoutComponent },
-      { path: 'shipping', component: ShippingComponent },
       { path: 'login', component: LoginComponent },
     ])
   ],
@@ -41,7 +40,6 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     ProductListComponent,
     ProductDetailsComponent,
     CartComponent,
-    ShippingComponent,
     CheckoutComponent,
     LoginComponent
   ],

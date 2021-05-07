@@ -7,12 +7,18 @@
     <div class="collapse navbar-collapse" id="navbarScroll">
       <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
         <li class="nav-item">
-          <a routerLink="/products">Products</a>
+          <a routerLink="/category">All Products</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/category', 1]">Mobile</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/category', 2]">Accessories</a>
         </li>
       </ul>
       <ul>
         <li class="nav-item">
-          <a *ngIf="!isLoggedIn()"  routerLink="/login">Login</a>
+          <a *ngIf="!isLoggedIn()"  [routerLink]="['/login']">Login</a>
           <button *ngIf="isLoggedIn()" (click)="onLogout()">Logout</button>
         </li>
         <li class="nav-item">
