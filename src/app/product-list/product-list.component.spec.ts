@@ -31,7 +31,7 @@ describe('ProductListComponent', () => {
     });
 
 
-    it('products should come after filteration', () => {
+    it('should return products count after filteration', () => {
         let categoryId = 1;
         const value = component.getProductsByCategory(categoryId)
         expect(value.length).toBe(4)

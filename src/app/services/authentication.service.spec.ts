@@ -12,7 +12,7 @@ describe('AuthenticationService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('Login should work and `authenticated User` sould be set', inject([AuthenticationService], (service: AuthenticationService) => {
+  it('should perform Login and `authenticated User` sould be set', inject([AuthenticationService], (service: AuthenticationService) => {
     let username: string = "admin";
     let password: string = "1234";
     let user = {username:"admin", password:"1234",roles:['USER']};
@@ -20,14 +20,14 @@ describe('AuthenticationService', () => {
     expect(service.authenticatedUser).toEqual(user);
   }));
 
-  it('Login should work and `isAuthenticated` sould be false', inject([AuthenticationService], (service: AuthenticationService) => {
+  it('should perform Login and `isAuthenticated` sould be false', inject([AuthenticationService], (service: AuthenticationService) => {
     let username: string = "user";
     let password: string = "12536";
     service.login(username, password);
     expect(service.isAuthenticated()).toBeFalse();
   }));
 
-  it('Logout should work and `isAuthenticated` sould be false', inject([AuthenticationService], (service: AuthenticationService) => {
+  it('should perform Logout and `isAuthenticated` sould be false', inject([AuthenticationService], (service: AuthenticationService) => {
     service.logout();
     expect(service.isAuthenticated()).toBeFalse();
     expect(service.authenticatedUser).toEqual(undefined);

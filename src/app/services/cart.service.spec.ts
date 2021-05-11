@@ -13,7 +13,7 @@ describe('CartService', () => {
     expect(service).toBeTruthy();
   }));
 
-  it('AddToCart should work and length of array should be 1', inject([CartService], (service: CartService) => {
+  it('should add the product into cart by using AddToCart and length of array should be 1', inject([CartService], (service: CartService) => {
     service.items = [];
     let product = {
       id: 1,
@@ -30,7 +30,7 @@ describe('CartService', () => {
     expect(service.items.length).toEqual(1);
   }));
 
-  it('subtotal should give sum of (price X qty)', inject([CartService], (service: CartService) => {
+  it('should give subtotal equal to sum of (price X qty)', inject([CartService], (service: CartService) => {
     let items = [{
       id: 1,
       name: 'Phone XL',
