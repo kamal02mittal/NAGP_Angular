@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -8,12 +7,11 @@ export class AuthenticationService {
   public authenticated: boolean;
   public authenticatedUser;
   private users=[
-    {username:"admin", password:"1234",roles:['USER','ADMIN']},
-    {username:"user1", password:"1234",roles:['USER']},
-    {username:"user2", password:"1234",roles:['USER']}
+    {username:"admin", password:"1234",roles:['USER']},
+    {username:"user1", password:"1234",roles:['USER']}
   ]
 
-  constructor(private http:HttpClient) {
+  constructor() {
   }
 
   login(username:string,password:string){

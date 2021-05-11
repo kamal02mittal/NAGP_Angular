@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +8,6 @@ export class CartService {
   total;
 
   constructor(
-    private http: HttpClient
   ) {
     let cartItems = localStorage.getItem('cartdata');
     if(cartItems){
@@ -17,7 +15,7 @@ export class CartService {
     }
   }
 
-  addToCart(product) {
+  addToCart(product:any) {
     let index = this.items.findIndex(x => x.id === product.id);
     if(index > -1){
       this.items[index].qty = parseInt(this.items[index].qty)+parseInt(product.qty);
@@ -47,10 +45,6 @@ export class CartService {
 
   updateItems(items){
     localStorage.setItem("cartdata",JSON.stringify(items));
-  }
-
-  getShippingPrices() {
-    return this.http.get<{type: string, price: number}[]>('/assets/shipping.json');
   }
 
 }
