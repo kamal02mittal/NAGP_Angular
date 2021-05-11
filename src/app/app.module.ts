@@ -14,6 +14,7 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { FooterComponent } from './footer/footer.component';
 import { LoginComponent } from './login/login.component';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 @NgModule({
   imports: [
@@ -42,6 +43,9 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter';
     CartComponent,
     CheckoutComponent,
     LoginComponent
+  ],
+  providers: [
+    {provide: LocationStrategy, useClass: HashLocationStrategy}
   ],
   bootstrap: [
     AppComponent
