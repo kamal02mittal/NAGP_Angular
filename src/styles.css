@@ -39,10 +39,18 @@ p {
 
 a {
   cursor: pointer;
-  color: #1976d2;
+
   text-decoration: none;
 }
 
+a,
+.products-main- a {
+  color: rgb(235, 175, 96);
+}
+a:hover,
+.products-main- a:hover {
+  color: rgb(235, 175, 96);
+}
 a:hover {
   opacity: 0.8;
 }
@@ -130,7 +138,7 @@ app-top-bar h1 {
 }
 
 .navbar {
-  background-color: antiquewhite;
+  background-color: rgb(235, 175, 96);
 }
 /* Checkout Cart, Shipping Prices */
 
@@ -160,6 +168,7 @@ app-top-bar h1 {
 }
 .fa {
   margin-right: 5px;
+  color: white;
 }
 
 /** Product Listing **/
@@ -199,7 +208,7 @@ a.checkout-button {
 }
 
 .footer-section {
-  background: antiquewhite;
+  background: rgb(235, 175, 96);
   padding: 15px;
   width: 100%;
   text-align: center;
@@ -256,7 +265,7 @@ button.qty-button {
   margin-bottom: 0;
 }
 li.nav-item a {
-  color: grey;
+  color: white;
   padding: 20px;
 }
 li.nav-item {
@@ -264,7 +273,7 @@ li.nav-item {
 }
 li.nav-item button {
   background: no-repeat;
-  color: grey;
+  color: white;
   display: inline-block;
   padding: 0px 10px;
 }
@@ -273,4 +282,33 @@ li.nav-item button {
 }
 .invalid-feedback span {
   color: #dc3545;
+}
+
+.btn-check:active + .btn-primary,
+.btn-check:checked + .btn-primary,
+.btn-primary.active,
+.btn-primary:active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: rgb(235, 175, 96);
+  border-color: rgb(235, 175, 96);
+}
+.btn-primary:hover {
+  color: #fff;
+  background-color: rgb(235, 175, 96);
+  border-color: rgb(235, 175, 96);
+}
+.qty-button,
+.checkout-button,
+.form-group .btn,
+.login-form .btn,
+.product-info .btn {
+  background-color: rgb(235, 175, 96) !important;
+  color: white !important;
+  border-color: rgb(235, 175, 96) !important;
+}
+a.home-nav.nav-item h3,
+a.home-nav.nav-item h3 i,
+.footer-section {
+  color: white;
 }
