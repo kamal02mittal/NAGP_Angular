@@ -312,3 +312,9 @@ a.home-nav.nav-item h3 i,
 .footer-section {
   color: white;
 }
+.products-main- img {
+  width: 100px;
+}
+.product-img img {
+  width: 250px;
+}
